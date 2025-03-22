@@ -4,13 +4,6 @@ import Navbar from './components/Navbar'
 import SplineScene from './components/SplineScene';
 
 function App() {
-  const [sidebarVisible, setSidebarVisible] = useState(false);
-
-  // Handle sidebar visibility changes from the Navbar component
-  const handleSidebarVisibilityChange = (isVisible) => {
-    setSidebarVisible(isVisible);
-  };
-
   return (
     <>
       {/* Video Background */}
@@ -22,15 +15,13 @@ function App() {
       {/* Dark Overlay */}
       <div className="overlay"></div>
       
-      <div className="layout">
-        {/* Include the Navbar component and pass the visibility handler */}
-        <Navbar onSidebarVisibilityChange={handleSidebarVisibilityChange} />
-
-        {/* Main Content Area */}
-        <div className={`main-content ${sidebarVisible ? 'sidebar-visible' : ''}`}>
-          <h1>Welcome to InFrame</h1>
-          <SplineScene />
-        </div>
+      {/* Navigation */}
+      <Navbar />
+      
+      {/* Main Content Area */}
+      <div className="main-content">
+        <h1>Welcome to InFrame</h1>
+        <SplineScene />
       </div>
     </>
   )
